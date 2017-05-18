@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Tender Watch</string>
+    <string name="facebook_app_id">1887036974871424</string>
+    <string name="fb_login_protocol_scheme">fb1887036974871424</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="lets_get_started">Let"'"s get Started!</string>
+    <string name="what_you_are">First, tell us what you are\nlooking for.</string>
+    <string name="looking_for_tenders">I"'"m looking for Tenders.</string>
+    <string name="want_post_tenders">I want to post Tenders</string>
+    <string name="btn_title_contractor">Contractor</string>
+    <string name="btn_title_client">Client</string>
+    <string name="tender_watch">Tender\nWatch</string>
+    <string name="sign_in">Sign In</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="create_an_account"><u>CREATE AN ACCOUNT</u></string>
+    <string name="signin_with_facebook">Sign-In with Facebook</string>
+</resources>

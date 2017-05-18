@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "542474859832",
+    "firebase_url": "https://tenderwatch-3b88e.firebaseio.com",
+    "project_id": "tenderwatch-3b88e",
+    "storage_bucket": "tenderwatch-3b88e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542474859832:android:33e1c288c802705c",
+        "android_client_info": {
+          "package_name": "jxgi.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542474859832-kub82q2q6jid76b4248c58lba5snblb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo8cdobjTwwnO4sQJB5hly3-x5UgokGUs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
