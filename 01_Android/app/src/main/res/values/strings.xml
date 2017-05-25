@@ -16,9 +16,52 @@
     <string name="btn_title_client">Client</string>
     <string name="tender_watch">Tender\nWatch</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_country">Country</string>
+    <string name="hint_mobile_number">Mobile Number</string>
+    <string name="hint_occupation">Occupation</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="create_an_account"><u>CREATE AN ACCOUNT</u></string>
     <string name="signin_with_facebook">Sign-In with Facebook</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="agree_rules">I Agree</string>
+    <string name="rules_and_regulations">Rules And Regulations</string>
+    <string name="home">Home</string>
+    <string name="upload_tender">Upload Tender</string>
+    <string name="add_remove_tenders">Add/Remove Tenders</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="notifications">Notifications</string>
+    <string name="logout">Logout</string>
+    <string name="subscription_details">Subscription Details</string>
+    <string name="favorite">Favorites</string>
+    <string name="add_remove_countries">Add/Remove Countries</string>
+    <string name="add_remove_categories">Add/Remove Categories</string>
+    <string name="submit">Submit</string>
+    <string name="interested_countries">You are interested in Tenders\nfrom which Country?</string>
+    <string name="interested_categories">Which Tender Category are you\ninterested in?</string>
+    <string name="subscription_format">$ %d /year</string>
+    <array name="test_countries">
+        <item>Argentina</item>
+        <item>Brazil</item>
+        <item>Croatia</item>
+        <item>Denmark</item>
+        <item>England</item>
+        <item>France</item>
+        <item>Germany</item>
+        <item>Holland</item>
+        <item>Italy</item>
+        <item>Japan</item>
+        <item>Korea</item>
+        <item>Luxemburg</item>
+        <item>Mexico</item>
+        <item>Norway</item>
+        <item>Poland</item>
+        <item>Qatar</item>
+    </array>
 </resources>

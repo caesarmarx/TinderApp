@@ -1,6 +1,7 @@
 package jxgi.com.application;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
@@ -10,11 +11,13 @@ import android.support.multidex.MultiDexApplication;
 
 public class TenderApplication extends MultiDexApplication {
     private static TenderApplication mainApplication;
+    public static Bitmap bmUserPhoto;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mainApplication = this;
+        bmUserPhoto = null;
     }
 
     @Override

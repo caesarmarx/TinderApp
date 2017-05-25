@@ -59,14 +59,8 @@ public class ContractorHomeActivity extends AppCompatActivity
         tvUserName.setText("Caesar Marx");
         ImageView ivUserPhoto = (ImageView) headerView.findViewById(R.id.iv_photo);
         if(!StringUtil.isEmpty(SharedPrefManager.getInstance(this).getUserPhoto())) {
-            ivUserPhoto.setImageBitmap(strToBitmap(SharedPrefManager.getInstance(this).getUserPhoto()));
+            ivUserPhoto.setImageBitmap(StringUtil.strToBitmap(SharedPrefManager.getInstance(this).getUserPhoto()));
         }
-    }
-
-    private Bitmap strToBitmap(String strImage) {
-        byte[] decodedByte = Base64.decode(strImage, 0);
-        return BitmapFactory
-                .decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 
     @Override

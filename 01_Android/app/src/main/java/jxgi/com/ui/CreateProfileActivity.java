@@ -29,6 +29,7 @@ import jxgi.com.R;
 import jxgi.com.application.TenderApplication;
 import jxgi.com.consts.CommonConsts;
 import jxgi.com.util.SharedPrefManager;
+import jxgi.com.util.StringUtil;
 
 public class CreateProfileActivity extends AppCompatActivity {
 
@@ -167,16 +168,6 @@ public class CreateProfileActivity extends AppCompatActivity {
         }
     }
 
-    private String bitmapToString(Bitmap image) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] b = baos.toByteArray();
-        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
-
-        Log.d("Image Log:", imageEncoded);
-        return imageEncoded;
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == SELECT_COUNTRY && resultCode == RESULT_OK) {
@@ -194,7 +185,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
             TenderApplication.bmUserPhoto = thePic;
 
-            String strImage = bitmapToString(thePic);
+            String strImage = StringUtil.bitmapToString(thePic);
             SharedPrefManager.getInstance(this).saveUserPhoto(strImage);
 
             ivCamera.setVisibility(View.GONE);

@@ -21,6 +21,13 @@
         <item name="android:background">@drawable/button_default</item>
     </style>
 
+    <style name="ButtonDisable">
+        <item name="android:layout_height">36dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/button_bg_disable</item>
+    </style>
+
     <style name="TextAppTitle">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/colorBlack</item>
@@ -39,6 +46,20 @@
 
     <style name="TextIntro">
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+    <style name="TextNavName">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+    <style name="TextDefault">
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:paddingTop">2dp</item>
         <item name="android:paddingBottom">2dp</item>

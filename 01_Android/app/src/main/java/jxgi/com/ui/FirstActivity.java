@@ -26,6 +26,8 @@ public class FirstActivity extends AppCompatActivity {
         SharedPrefManager.getInstance(this).saveUserType(CommonConsts.USER_TYPE_CONTRACTOR);
         Intent intent = new Intent(FirstActivity.this, SignInActivity.class);
         startActivity(intent);
+
+        finish();
     }
 
     @OnClick(R.id.btn_client)
@@ -33,5 +35,7 @@ public class FirstActivity extends AppCompatActivity {
         SharedPrefManager.getInstance(this).saveUserType(CommonConsts.USER_TYPE_CLIENT);
         Intent intent = new Intent(FirstActivity.this, SignInActivity.class);
         startActivity(intent);
+
+        finish();
     }
 }
