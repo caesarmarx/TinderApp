@@ -1,5 +1,6 @@
 package jxgi.com.ui;
 
+import android.app.FragmentManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import jxgi.com.R;
 import jxgi.com.application.TenderApplication;
+import jxgi.com.fragment.ActiveTenderFragment;
 import jxgi.com.util.SharedPrefManager;
 import jxgi.com.util.StringUtil;
 
@@ -35,15 +37,6 @@ public class ContractorHomeActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -71,6 +64,16 @@ public class ContractorHomeActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        FragmentManager manager = getFragmentManager();
+        manager.beginTransaction()
+                .replace(R.id.content_client_home, ActiveTenderFragment.newInstance())
+                .commit();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

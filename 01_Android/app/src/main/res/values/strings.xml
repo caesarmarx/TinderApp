@@ -25,6 +25,7 @@
     <string name="hint_country">Country</string>
     <string name="hint_mobile_number">Mobile Number</string>
     <string name="hint_occupation">Occupation</string>
+    <string name="hint_verification_code">Verification Code</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="create_an_account"><u>CREATE AN ACCOUNT</u></string>
     <string name="signin_with_facebook">Sign-In with Facebook</string>
@@ -46,6 +47,14 @@
     <string name="interested_countries">You are interested in Tenders\nfrom which Country?</string>
     <string name="interested_categories">Which Tender Category are you\ninterested in?</string>
     <string name="subscription_format">$ %d /year</string>
+    <string name="upload_photo">Please upload your photo.</string>
+    <string name="select_countries">Please select more than one country.</string>
+    <string name="select_categories">Please select more than one category.</string>
+    <string name="set_password">Set Password</string>
+    <string name="hint_category">Category</string>
+    <string name="hint_tender">Tender</string>
+    <string name="hint_client_name">Name</string>
+
     <array name="test_countries">
         <item>Argentina</item>
         <item>Brazil</item>

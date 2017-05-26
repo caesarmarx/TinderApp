@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -75,8 +76,13 @@ public class ChooseCountriesActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_next)
     void onClickBtnNext() {
-        Intent intent = new Intent(ChooseCountriesActivity.this, ChooseCategoriesActivity.class);
-        startActivity(intent);
+        ArrayList<CountryItem> selectedItems = adapter.getSelectedItems();
+        if(selectedItems.size() == 0) {
+            Toast.makeText(ChooseCountriesActivity.this, R.string.select_countries, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(ChooseCountriesActivity.this, ChooseCategoriesActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void refreshCosts() {

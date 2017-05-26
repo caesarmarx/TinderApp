@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -70,8 +71,13 @@ public class ChooseCategoriesActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_next)
     void onClickBtnNext() {
-        Intent intent = new Intent(ChooseCategoriesActivity.this, RulesAndRegulationsActivity.class);
-        startActivity(intent);
+        ArrayList<CategoryItem> selectedItems = adapter.getSelectedItems();
+        if(selectedItems.size() == 0) {
+            Toast.makeText(ChooseCategoriesActivity.this, R.string.select_categories, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(ChooseCategoriesActivity.this, RulesAndRegulationsActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void refreshCosts() {

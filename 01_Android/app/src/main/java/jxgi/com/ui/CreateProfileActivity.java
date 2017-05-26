@@ -10,16 +10,15 @@ import android.provider.MediaStore;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,8 +51,11 @@ public class CreateProfileActivity extends AppCompatActivity {
     private String selectedCountry = "";
     private String mobileNum;
     private String occupation;
+    private String strPhoto = "";
 
     private Uri picUri;
+
+    private Animation shake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,8 @@ public class CreateProfileActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        shake = AnimationUtils.loadAnimation(CreateProfileActivity.this, R.anim.edittext_shake);
     }
 
     @OnClick(R.id.btn_next)
@@ -92,9 +96,15 @@ public class CreateProfileActivity extends AppCompatActivity {
         mobileNum = edtMobileNumber.getText().toString();
         occupation = edtOccupation.getText().toString();
 
+        if(!checkCountry()) return;
+        if(!checkMobileNumber()) return;
+        if(!checkOccupation()) return;
+        if(!checkPhoto()) return;
+
         SharedPrefManager.getInstance(this).saveUserBaseCountry(selectedCountry);
         SharedPrefManager.getInstance(this).saveUserMobile(mobileNum);
         SharedPrefManager.getInstance(this).saveUserOccupation(occupation);
+        SharedPrefManager.getInstance(this).saveUserPhoto(strPhoto);
 
         if(SharedPrefManager.getInstance(this).getUserType() == CommonConsts.USER_TYPE_CONTRACTOR) {
             Intent intent = new Intent(CreateProfileActivity.this, ChooseCountriesActivity.class);
@@ -102,6 +112,54 @@ public class CreateProfileActivity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(CreateProfileActivity.this, RulesAndRegulationsActivity.class);
             startActivity(intent);
+        }
+    }
+
+    private boolean checkCountry() {
+        if (StringUtil.isEmpty(selectedCountry)) {
+            showInfoNotice(edtCountry);
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean checkMobileNumber() {
+        if (StringUtil.isEmpty(mobileNum)) {
+            showInfoNotice(edtMobileNumber);
+            return false;
+        }
+
+        if (!Patterns.PHONE.matcher(mobileNum).matches()) {
+            showInfoNotice(edtMobileNumber);
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean checkOccupation() {
+        if (StringUtil.isEmpty(occupation)) {
+            showInfoNotice(edtOccupation);
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean checkPhoto() {
+        if (StringUtil.isEmpty(strPhoto)) {
+            Toast.makeText(CreateProfileActivity.this, R.string.upload_photo, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showInfoNotice(TextInputEditText target) {
+        target.startAnimation(shake);
+        if (target.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
 
@@ -185,8 +243,8 @@ public class CreateProfileActivity extends AppCompatActivity {
 
             TenderApplication.bmUserPhoto = thePic;
 
-            String strImage = StringUtil.bitmapToString(thePic);
-            SharedPrefManager.getInstance(this).saveUserPhoto(strImage);
+            strPhoto = StringUtil.bitmapToString(thePic);
+
 
             ivCamera.setVisibility(View.GONE);
             ivPhoto.setImageBitmap(thePic);

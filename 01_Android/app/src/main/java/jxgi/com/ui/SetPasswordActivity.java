@@ -8,26 +8,21 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jxgi.com.R;
-import jxgi.com.consts.CommonConsts;
 import jxgi.com.util.SharedPrefManager;
 import jxgi.com.util.StringUtil;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SetPasswordActivity extends AppCompatActivity {
 
-    @Bind(R.id.edt_email)
-    TextInputEditText edtEmailAddr;
     @Bind(R.id.edt_password)
     TextInputEditText edtPassword;
     @Bind(R.id.edt_confirm_password)
     TextInputEditText edtConfirmPassword;
 
-    private String emailAddr;
     private String password;
     private String confirmPassword;
 
@@ -36,28 +31,26 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_set_password);
         ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.sign_up);
+        getSupportActionBar().setTitle(R.string.set_password);
 
-        shake = AnimationUtils.loadAnimation(SignUpActivity.this, R.anim.edittext_shake);
+        shake = AnimationUtils.loadAnimation(SetPasswordActivity.this, R.anim.edittext_shake);
     }
 
-    @OnClick(R.id.btn_signup)
-    void onClickBtnSignUp() {
-        emailAddr = edtEmailAddr.getText().toString();
+    @OnClick(R.id.btn_submit)
+    void onClickBtnSubmit() {
         password = edtPassword.getText().toString();
         confirmPassword = edtConfirmPassword.getText().toString();
 
-        if(!checkEmailAddress()) return;
         if(!checkPassword()) return;
         if(!checkConfirmPassword()) return;
 
         if(!checkPasswordCorrection()) return;
 
-        onSignUpSuccess();
+        onSetPwdSuccess();
     }
 
     @Override
@@ -67,20 +60,6 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private boolean checkEmailAddress() {
-        if (StringUtil.isEmpty(emailAddr)) {
-            showInfoNotice(edtEmailAddr);
-            return false;
-        }
-
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddr).matches()) {
-            showInfoNotice(edtEmailAddr);
-            return false;
-        }
-
-        return true;
     }
 
     private boolean checkPassword() {
@@ -119,11 +98,12 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    private void onSignUpSuccess() {
-        SharedPrefManager.getInstance(this).saveUserEmail(emailAddr);
-        SharedPrefManager.getInstance(this).saveUserPassword(password);
+    private void onSetPwdSuccess() {
+        Intent intent = new Intent(SetPasswordActivity.this, SignInActivity.class);
 
-        Intent intent = new Intent(SignUpActivity.this, CreateProfileActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
         startActivity(intent);
     }
 }

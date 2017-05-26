@@ -103,6 +103,11 @@ public class SignInActivity extends AppCompatActivity {
             return false;
         }
 
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddr).matches()) {
+            showInfoNotice(edtEmailAddr);
+            return false;
+        }
+
         return true;
     }
 
@@ -130,7 +135,7 @@ public class SignInActivity extends AppCompatActivity {
 
     @OnClick(R.id.tv_forgot_password)
     void onClickTvForgotPassword() {
-        Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+        Intent intent = new Intent(SignInActivity.this, InputEmailActivity.class);
         startActivity(intent);
     }
 
